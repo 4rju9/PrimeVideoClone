@@ -1,4 +1,4 @@
-package cf.arjun.dev.primevideoclone.model;
+package cf.arjun.dev.primevideoclone.models;
 
 public class BannerMovies {
 
