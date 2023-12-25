@@ -6,13 +6,16 @@ import android.os.Bundle;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import cf.arjun.dev.primevideoclone.adapters.BannerMoviesPagerAdapter;
 import cf.arjun.dev.primevideoclone.models.BannerMovies;
 
 public class MainActivity extends AppCompatActivity {
 
     BannerMoviesPagerAdapter bannerMoviespagerAdapter;
-    TabLayout tabLayout;
+    TabLayout tabLayout, indicatorTabLayout;
     ViewPager bannerMoviesViewPager;
     List<BannerMovies> bannerMoviesList;
 
@@ -37,7 +40,29 @@ public class MainActivity extends AppCompatActivity {
         bannerMoviesViewPager = findViewById(R.id.bannerViewPager);
         bannerMoviespagerAdapter = new BannerMoviesPagerAdapter(this, bannerMoviesList);
         bannerMoviesViewPager.setAdapter(bannerMoviespagerAdapter);
+        indicatorTabLayout = findViewById(R.id.tabIndicator);
+        indicatorTabLayout.setupWithViewPager(bannerMoviesViewPager, true);
 
+        Timer sliderTimer = new Timer();
+        sliderTimer.scheduleAtFixedRate(new BannerAutoSlider(), 4000, 6000);
+
+    }
+
+    class BannerAutoSlider extends TimerTask {
+
+        @Override
+        public void run() {
+
+            MainActivity.this.runOnUiThread( () -> {
+                int index = bannerMoviesViewPager.getCurrentItem();
+                if (index < bannerMoviesList.size() - 1) {
+                    bannerMoviesViewPager.setCurrentItem(index + 1);
+                } else {
+                    bannerMoviesViewPager.setCurrentItem(0);
+                }
+            });
+
+        }
     }
 
 }
