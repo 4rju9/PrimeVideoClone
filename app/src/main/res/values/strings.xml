@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Prime Video Clone</string>
+    <string name="tvHome">Home</string>
+    <string name="tvTvShows">Tv Shows</string>
+    <string name="tvMovies">Movies</string>
+    <string name="tvKids">Kids</string>
 </resources>
