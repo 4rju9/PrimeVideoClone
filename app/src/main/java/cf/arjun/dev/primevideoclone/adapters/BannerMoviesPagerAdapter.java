@@ -14,14 +14,14 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import cf.arjun.dev.primevideoclone.R;
-import cf.arjun.dev.primevideoclone.models.BannerMovies;
+import cf.arjun.dev.primevideoclone.models.Movies;
 
 public class BannerMoviesPagerAdapter extends PagerAdapter {
 
     Context context;
-    List<BannerMovies> bannerMoviesList;
+    List<Movies> bannerMoviesList;
 
-    public BannerMoviesPagerAdapter(Context context, List<BannerMovies> bannerMoviesList) {
+    public BannerMoviesPagerAdapter(Context context, List<Movies> bannerMoviesList) {
         this.context = context;
         this.bannerMoviesList = bannerMoviesList;
     }

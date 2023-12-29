@@ -1,13 +1,13 @@
 package cf.arjun.dev.primevideoclone.models;
 
-public class BannerMovies {
+public class Movies {
 
     Integer id;
     String movieName;
     String imageUrl;
     String fileUrl;
 
-    public BannerMovies(Integer id, String movieName, String imageUrl, String fileUrl) {
+    public Movies(Integer id, String movieName, String imageUrl, String fileUrl) {
         this.id = id;
         this.movieName = movieName;
         this.imageUrl = imageUrl;
