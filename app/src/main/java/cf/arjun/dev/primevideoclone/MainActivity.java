@@ -1,11 +1,15 @@
 package cf.arjun.dev.primevideoclone;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +22,8 @@ import cf.arjun.dev.primevideoclone.models.Movies;
 
 public class MainActivity extends AppCompatActivity {
 
+    NestedScrollView nestedScrollView;
+    AppBarLayout appBar;
     BannerMoviesPagerAdapter bannerMoviespagerAdapter;
     TabLayout tabLayout, indicatorTabLayout;
     ViewPager bannerMoviesViewPager;
@@ -40,8 +46,18 @@ public class MainActivity extends AppCompatActivity {
     private void setupUIViews () {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        appBar = findViewById(R.id.mainAppBar);
+        nestedScrollView = findViewById(R.id.mainNestedScrollView);
         indicatorTabLayout = findViewById(R.id.tabIndicator);
         tabLayout = findViewById(R.id.tabLayout);
+
+    }
+
+    private void resetScrollView () {
+
+        appBar.setExpanded(true);
+        nestedScrollView.fullScroll(View.FOCUS_UP);
+        nestedScrollView.scrollTo(0, 0);
 
     }
 
@@ -108,15 +124,19 @@ public class MainActivity extends AppCompatActivity {
                 int position = tab.getPosition();
                 switch (position) {
                     case 1: {
+                        resetScrollView();
                         setBannerMoviesPagerAdapter(tvBannerList);
                         break;
                     } case 2: {
+                        resetScrollView();
                         setBannerMoviesPagerAdapter(moviesBannerList);
                         break;
                     } case 3: {
+                        resetScrollView();
                         setBannerMoviesPagerAdapter(kidsBannerList);
                         break;
                     } default: {
+                        resetScrollView();
                         setBannerMoviesPagerAdapter(homeBannerList);
                     }
                 }
