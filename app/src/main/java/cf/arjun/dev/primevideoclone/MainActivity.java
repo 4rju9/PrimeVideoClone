@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         homeItemList3.add(new Movies(2, "RAMAYANA", "https://m.media-amazon.com/images/M/MV5BODFjYWEyOTktMTU3OC00YTBhLWE4ZmEtNTJiYWUzYTYwMjIzXkEyXkFqcGdeQXVyNjU1NDgwMDg@._V1_UY209_CR4,0,140,209_AL_.jpg", ""));
         homeItemList3.add(new Movies(3, "Taarak Mehta Ka Ooltah Chashmah", "https://m.media-amazon.com/images/M/MV5BYzkyZjQ0MjAtNmMyYS00ZDQwLWE1YmItYzIwNTUyMDlmYWM5XkEyXkFqcGdeQXVyNDc0MDgzNTE@._V1_UY209_CR0,0,140,209_AL_.jpg", ""));
         homeItemList3.add(new Movies(4, " Kaun Banega Crorepati?", "https://m.media-amazon.com/images/M/MV5BZDE3YTNhNzctZjdiNy00YjZjLWE4MDMtOGJjODE2YjE3NDllXkEyXkFqcGdeQXVyODAzNzAwOTU@._V1_UY209_CR3,0,140,209_AL_.jpg", ""));
-        homeItemList3.add(new Movies(5, "SHAKTIMANA", "https://m.media-amazon.com/images/M/MV5BYzQyYmE2NDItZTBlZS00MmEyLWI4MjctMWM1NWVkY2MxNzg3XkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_UY209_CR4,0,140,209_AL_.jpg", ""));
+        homeItemList3.add(new Movies(5, "SHAKTIMAAN", "https://m.media-amazon.com/images/M/MV5BYzQyYmE2NDItZTBlZS00MmEyLWI4MjctMWM1NWVkY2MxNzg3XkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_UY209_CR4,0,140,209_AL_.jpg", ""));
 
         allCategoryList = new ArrayList<>();
         allCategoryList.add(new AllCategory(1, "Comedy movies", homeItemList1));

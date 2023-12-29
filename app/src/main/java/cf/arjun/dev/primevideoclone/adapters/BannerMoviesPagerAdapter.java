@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
@@ -50,6 +51,9 @@ public class BannerMoviesPagerAdapter extends PagerAdapter {
         ImageView bannerImage = view.findViewById(R.id.bannerImage);
         Glide.with(context).load(bannerMoviesList.get(position).getImageUrl()).into(bannerImage);
         container.addView(view);
+        // on click listener on the banner image.
+        bannerImage.setOnClickListener( v -> Toast.makeText(context, bannerMoviesList.get(position)
+                .getMovieName(), Toast.LENGTH_SHORT).show());
         return view;
 
     }
