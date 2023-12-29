@@ -1,19 +1,16 @@
 package cf.arjun.dev.primevideoclone.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
-
 import com.bumptech.glide.Glide;
-
 import java.util.List;
-
+import cf.arjun.dev.primevideoclone.MovieDetails;
 import cf.arjun.dev.primevideoclone.R;
 import cf.arjun.dev.primevideoclone.models.Movies;
 
@@ -46,14 +43,29 @@ public class BannerMoviesPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
+        // current object on the movie list.
+        Movies current = bannerMoviesList.get(position);
+
+
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.banner_movie_layout, null);
 
+        // Finding and setting the image.
         ImageView bannerImage = view.findViewById(R.id.bannerImage);
-        Glide.with(context).load(bannerMoviesList.get(position).getImageUrl()).into(bannerImage);
+        Glide.with(context).load(current.getImageUrl()).into(bannerImage);
+
+        // adding the view into the parentView.
         container.addView(view);
+
         // on click listener on the banner image.
-        bannerImage.setOnClickListener( v -> Toast.makeText(context, bannerMoviesList.get(position)
-                .getMovieName(), Toast.LENGTH_SHORT).show());
+        bannerImage.setOnClickListener( v -> {
+
+            Intent intent = new Intent(context, MovieDetails.class);
+            intent.putExtra("id", current.getId());
+            intent.putExtra("name", current.getMovieName());
+            intent.putExtra("imageUrl", current.getImageUrl());
+            context.startActivity(intent);
+
+        });
         return view;
 
     }

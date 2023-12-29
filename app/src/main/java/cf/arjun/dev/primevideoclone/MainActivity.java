@@ -87,23 +87,22 @@ public class MainActivity extends AppCompatActivity {
         kidsBannerList.add(new Movies(4, "STRANGE WORLD", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv-qjwc5lZ-Xxc0brdgusp7fFkYGWPZ98M-w&usqp=CAU", ""));
 
         List<Movies> homeItemList1 = new ArrayList<>();
-        homeItemList1.add(new Movies(1, "DHAMAL", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8I2vAjyTzgH7e26wapyw30ZMEjUyO5-kMtYpKMmIwxUpVfKcQaZCNV1lEHaCEPG_OExQ&usqp=CAU", ""));
-        homeItemList1.add(new Movies(2, "DHOL", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh1RywiWLMU3cr4BFmJ8Mke_e3PjHpH0AnNWTjnnqHCspAe5QzbXVYMoZRg9bwog61x9c&usqp=CAU", ""));
-        homeItemList1.add(new Movies(3, "JHOOTHA KAHIN KA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhMcWfismhf2bOV8qXDk-vcma42W5VLdK2Lu2FeEhD26X9OnzSYyQ1S1amholwwOKyq1s&usqp=CAU", ""));
+        homeItemList1.add(new Movies(1, "DHAMAL", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGE7Ru849-CouHPXcvEugD5LyVVxgHXGpUMCf4B_Rmoc_3ybcPMf4rkK8ecC4lC6pX8eY&usqp=CAU", ""));
+        homeItemList1.add(new Movies(2, "DHOL", "https://img1.hotstarext.com/image/upload/f_auto,t_hcdl/sources/r1/cms/prod/old_images/MOVIE/2067/1000102067/1000102067-h", ""));
+        homeItemList1.add(new Movies(3, "JHOOTHA KAHIN KA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk0Wj8yhOhvd1SlaMM1Rr3RlMNNaJFzGkZv8x8-GkTC3BvnSyDnQb1PtcTyf5ATOsTns4&usqp=CAU", ""));
 
         List<Movies> homeItemList2 = new ArrayList<>();
-        homeItemList2.add(new Movies(1, "PATHAAN", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtfV689Zt69ZII_yYu3-hT9k0QUSDeGxSo1cTpP28ixWEpRv6Y3LZskE7MvvHhpscdWeU&usqp=CAU", ""));
-        homeItemList2.add(new Movies(2, "ACTION JACKSON", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6n2PkNPQ_kv-BxipSAtBRi8hSHICX-g5oYNCCt-D6ryDfc2_2FVEJx4WD2pXNvdO9QMI&usqp=CAU", ""));
-        homeItemList2.add(new Movies(3, "BHOOT POLICE", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuD59jGuyRLkNAmppIxVs4ebvMeIPFa54Pw707SC_DmL2ixD7IFTO9LdLHdoqN1oXn8Po&usqp=CAU", ""));
-        homeItemList2.add(new Movies(4, "SHAMSHERA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8SU45pKefiD-XWe_is8zFuvt3u-m0ysbc275D5AtHN4P1fuJGZKplpQgqRB_GP4c9VEo&usqp=CAU", ""));
-        homeItemList2.add(new Movies(5, "D-DAY", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZeU6_LiK6-1kMppMJWf6B452xn0CcncwolLaQLmMdq04oZCArT8sSrMFYGVDXP2Kp3Mk&usqp=CAU", ""));
+        homeItemList2.add(new Movies(1, "PATHAAN", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZtSzm23_itlm8fPlTs-6mlZKnBqeLoF7YsERQhSkE63KtxyMY_K5xpT0_EqJWgLvUcFY&usqp=CAU", ""));
+        homeItemList2.add(new Movies(2, "ACTION JACKSON", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkyxIFV22C72ahiA27hVFRV53uJvEH7EhNKoQ8DPtM_ncQda7V7Eh4Td5U7WXfXt6wMAA&usqp=CAU", ""));
+        homeItemList2.add(new Movies(3, "BHOOT POLICE", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtUmF51J7aWS4HnH6RKecZpDSilblzIXDcO_9pMdgpJWqXimmCQlc4q_YT4r5nqBNudr8&usqp=CAU", ""));
+        homeItemList2.add(new Movies(4, "SHAMSHERA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTFa7Dfu0dmwVW74DR_uf0Fs6oGYMlOGyg528GVzuF7x_ii5ocvuV10U3FSDNIJbvJSqU&usqp=CAU", ""));
+        homeItemList2.add(new Movies(5, "D-DAY", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmJvLKnNQlhaBN0egVr9by8230UCvkas3QEbxPgQz6LYQiem8FG-AGQ0tAG4TtAymTPWo&usqp=CAU", ""));
 
         List<Movies> homeItemList3 = new ArrayList<>();
-        homeItemList3.add(new Movies(1, "MAHABHARAT", "https://m.media-amazon.com/images/M/MV5BMGE1MTlmNmYtMTg4Zi00NWRmLWIxMzktMTViNjRmYTQ5NDI2XkEyXkFqcGdeQXVyODAzNzAwOTU@._V1_UY209_CR3,0,140,209_AL_.jpg", ""));
-        homeItemList3.add(new Movies(2, "RAMAYANA", "https://m.media-amazon.com/images/M/MV5BODFjYWEyOTktMTU3OC00YTBhLWE4ZmEtNTJiYWUzYTYwMjIzXkEyXkFqcGdeQXVyNjU1NDgwMDg@._V1_UY209_CR4,0,140,209_AL_.jpg", ""));
-        homeItemList3.add(new Movies(3, "Taarak Mehta Ka Ooltah Chashmah", "https://m.media-amazon.com/images/M/MV5BYzkyZjQ0MjAtNmMyYS00ZDQwLWE1YmItYzIwNTUyMDlmYWM5XkEyXkFqcGdeQXVyNDc0MDgzNTE@._V1_UY209_CR0,0,140,209_AL_.jpg", ""));
-        homeItemList3.add(new Movies(4, " Kaun Banega Crorepati?", "https://m.media-amazon.com/images/M/MV5BZDE3YTNhNzctZjdiNy00YjZjLWE4MDMtOGJjODE2YjE3NDllXkEyXkFqcGdeQXVyODAzNzAwOTU@._V1_UY209_CR3,0,140,209_AL_.jpg", ""));
-        homeItemList3.add(new Movies(5, "SHAKTIMAAN", "https://m.media-amazon.com/images/M/MV5BYzQyYmE2NDItZTBlZS00MmEyLWI4MjctMWM1NWVkY2MxNzg3XkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_UY209_CR4,0,140,209_AL_.jpg", ""));
+        homeItemList3.add(new Movies(1, "MAHABHARAT", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7MR1TO6ubpFF0wBxItBZVmXL6gexBCPM9CgFzRdFewR8je1DHULC6heL0dTaHNfekNxI&usqp=CAU", ""));
+        homeItemList3.add(new Movies(2, "RAMAYANA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXSwQYzmlgj7Mn1jSQXomKGh_xmgZNYv9sa2g2fYKw9t9YnAmhL4EOWIB1ak-u95wWFcs&usqp=CAU", ""));
+        homeItemList3.add(new Movies(3, "TAARAK MEHTA KA OOLTAH CHASHMAH", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7MR1TO6ubpFF0wBxItBZVmXL6gexBCPM9CgFzRdFewR8je1DHULC6heL0dTaHNfekNxI&usqp=CAU", ""));
+        homeItemList3.add(new Movies(5, "NAAGIN SEASON 5", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS29R3nU5yArItqGtGvYAQQCEzadIUEe6GYXNomwo_rnO_q_zXTaEv88t9VclYCpqfzNvI&usqp=CAU", ""));
 
         allCategoryList = new ArrayList<>();
         allCategoryList.add(new AllCategory(1, "Comedy movies", homeItemList1));

@@ -5,4 +5,5 @@
     <string name="tvMovies">Movies</string>
     <string name="tvKids">Kids</string>
     <string name="descBannerMovies">Banner Movies</string>
+    <string name="tvStartOver">Start Over</string>
 </resources>

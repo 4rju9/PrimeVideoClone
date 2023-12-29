@@ -1,16 +1,16 @@
 package cf.arjun.dev.primevideoclone.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import java.util.List;
+import cf.arjun.dev.primevideoclone.MovieDetails;
 import cf.arjun.dev.primevideoclone.R;
 import cf.arjun.dev.primevideoclone.models.Movies;
 
@@ -32,11 +32,21 @@ public class MainItemRecyclerAdapter extends RecyclerView.Adapter<MainItemRecycl
 
     @Override
     public void onBindViewHolder(@NonNull MainItemViewHolder holder, int position) {
-        Glide.with(context).load(moviesList.get(position).getImageUrl()).into(holder.itemImage);
+
+        Movies current = moviesList.get(position);
+
+        Glide.with(context).load(current.getImageUrl()).into(holder.itemImage);
 
         // on click listener on the item image.
-        holder.itemImage.setOnClickListener( v -> Toast.makeText(context, moviesList.get(position)
-                .getMovieName(), Toast.LENGTH_SHORT).show());
+        holder.itemImage.setOnClickListener( v -> {
+
+            Intent intent = new Intent(context, MovieDetails.class);
+            intent.putExtra("id", current.getId());
+            intent.putExtra("name", current.getMovieName());
+            intent.putExtra("imageUrl", current.getImageUrl());
+            context.startActivity(intent);
+
+        });
 
     }
 

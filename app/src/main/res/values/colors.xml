@@ -8,4 +8,6 @@
     <color name="textGray2">#C2C2C4</color>
     <color name="textGray3">#595858</color>
 
+    <color name="playButton">#0288D1</color>
+
 </resources>
