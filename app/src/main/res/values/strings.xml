@@ -6,4 +6,5 @@
     <string name="tvKids">Kids</string>
     <string name="descBannerMovies">Banner Movies</string>
     <string name="tvStartOver">Start Over</string>
+    <string name="track_selection_title">Video Quality</string>
 </resources>

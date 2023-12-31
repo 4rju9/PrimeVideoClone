@@ -9,5 +9,6 @@
     <color name="textGray3">#595858</color>
 
     <color name="playButton">#0288D1</color>
+    <color name="transparentBlack">#A6000000</color>
 
 </resources>

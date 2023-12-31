@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PrimeVideoClone"
         tools:targetApi="31">
         <activity
+            android:name=".PlayerViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".MovieDetails"
             android:exported="false" />
         <activity

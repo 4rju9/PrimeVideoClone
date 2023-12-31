@@ -4,6 +4,12 @@
         <!-- Customize your light theme here. -->
 <!--         <item name="colorPrimary">@color/backgroundPrimeVideo</item>-->
     </style>
-
     <style name="Theme.PrimeVideoClone" parent="Base.Theme.PrimeVideoClone" />
+
+    <style parent="ThemeOverlay.AppCompat.Dialog.Alert" name="TrackSelectionDialogThemeOverlay">
+
+        <item name="windowNoTitle">false</item>
+
+    </style>
+
 </resources>
