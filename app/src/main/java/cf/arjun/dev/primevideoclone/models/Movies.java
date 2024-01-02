@@ -2,6 +2,7 @@ package cf.arjun.dev.primevideoclone.models;
 
 public class Movies {
 
+    Integer categoryId;
     Integer id;
     String movieName;
     String imageUrl;
@@ -12,6 +13,14 @@ public class Movies {
         this.movieName = movieName;
         this.imageUrl = imageUrl;
         this.fileUrl = fileUrl;
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public Integer getId() {

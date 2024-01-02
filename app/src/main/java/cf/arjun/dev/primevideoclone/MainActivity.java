@@ -9,8 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.android.volley.Request;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -22,12 +28,13 @@ import cf.arjun.dev.primevideoclone.models.Movies;
 
 public class MainActivity extends AppCompatActivity {
 
+    Queue volley;
     NestedScrollView nestedScrollView;
     AppBarLayout appBar;
     BannerMoviesPagerAdapter bannerMoviespagerAdapter;
     TabLayout tabLayout, indicatorTabLayout;
     ViewPager bannerMoviesViewPager;
-    List<Movies> homeBannerList, tvBannerList, moviesBannerList, kidsBannerList;
+    List<Movies> homeBannerList, tvBannerList, moviesBannerList, kidsBannerList, banners;
     MainRecyclerAdapter mainAdapter;
     RecyclerView mainRecycler;
     List<AllCategory> allCategoryList;
@@ -38,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setupUIViews();
-        setupLists();
-        initTab();
+        loadBanner();
 
     }
 
     private void setupUIViews () {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        volley = Queue.getInstance(this.getApplicationContext());
         appBar = findViewById(R.id.mainAppBar);
         nestedScrollView = findViewById(R.id.mainNestedScrollView);
         indicatorTabLayout = findViewById(R.id.tabIndicator);
@@ -64,27 +71,38 @@ public class MainActivity extends AppCompatActivity {
     private void setupLists () {
 
         homeBannerList = new ArrayList<>();
-        homeBannerList.add(new Movies(1, "AQUA MAN", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7byybfv7B3BlEb7btSnQ2XAQRHDao9q9_Iw&usqp=CAU", ""));
-        homeBannerList.add(new Movies(2, "BLACK WIDOW", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNyJ1uXbVY-smPvVtdaK4c8eyAimNjWxz-VA&usqp=CAU", ""));
-        homeBannerList.add(new Movies(3, "THE AMAZING SPIDER MAN", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3cHeuIyp7dYGjJaq351m97BBj_15zazCESA&usqp=CAU", ""));
-        homeBannerList.add(new Movies(4, "JUSTICE LEAGUE", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbB5WuyTsBdfgfKZr3YaXbRq0giaHErYkyXA&usqp=CAU", ""));
-        homeBannerList.add(new Movies(5, "K. G. F. CHAPTER 2", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTQGHO4P6zJkavlE_PPD1Whm6aUme9JrX-Dg&usqp=CAU", ""));
-
         tvBannerList = new ArrayList<>();
-        tvBannerList.add(new Movies(1, "ORIGINAL SIN", "https://film-book.com/wp-content/uploads/2022/08/pretty-little-liars-original-sin-tv-show-poster-banner-01-700x400-1-700x400.jpg", ""));
-        tvBannerList.add(new Movies(2, "THEM", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUhiaYJHzZOAdwEAvuliUmdMAxHdkVngzRpw&usqp=CAU", ""));
-        tvBannerList.add(new Movies(3, "SQUID GAMES", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRelqOyA2vibMPfWo0rM0hoScofNs9ilG8eRQ&usqp=CAU", ""));
-
         moviesBannerList = new ArrayList<>();
-        moviesBannerList.add(new Movies(1, "GHAYAL", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQghoSQN5eB0WRoR7UC1mDQIBiBU7lqhNtDBiGxe-0OjTvwWT-A9Yc7OFopWY_OggTvm0E&usqp=CAU", ""));
-        moviesBannerList.add(new Movies(2, "X-MEN APOCALYPSE", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXuWFeXoqXQRG_EYJmDkS_b7AXshaVCBqNR__fsFE6-LgIjcL4uD9FUt3Dtb4U4MTE97k&usqp=CAU", ""));
-        moviesBannerList.add(new Movies(3, "LEO", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKaAOPmjTijbgq6B3wfg-E1VuA5S0Fou1FhQ&usqp=CAU", ""));
-
         kidsBannerList = new ArrayList<>();
-        kidsBannerList.add(new Movies(1, "MALEFICENT", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoVqC6AP3tmqbSZlmCJ983NqkSlOsVvMHLVQ&usqp=CAU", ""));
-        kidsBannerList.add(new Movies(2, "ENCANTO", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs0swMgh1CowDeiRvDmEwQefbRgfXz5IgsBQ&usqp=CAU", ""));
-        kidsBannerList.add(new Movies(3, "RAYA AND THE LAST THE DRAGON", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYjwwntJ1jXF4iufQuNoPyqCJIbb5C9FhVag&usqp=CAU", ""));
-        kidsBannerList.add(new Movies(4, "STRANGE WORLD", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv-qjwc5lZ-Xxc0brdgusp7fFkYGWPZ98M-w&usqp=CAU", ""));
+
+        int size = banners.size();
+
+        for (int i=0; i<size; i++) {
+
+            Movies movie = banners.get(i);
+
+            switch (movie.getCategoryId()) {
+
+                case 1: {
+                    homeBannerList.add(movie);
+                    break;
+                }
+                case 2: {
+                    tvBannerList.add(movie);
+                    break;
+                }
+                case 3: {
+                    moviesBannerList.add(movie);
+                    break;
+                }
+                case 4: {
+                    kidsBannerList.add(movie);
+                    break;
+                }
+
+            }
+
+        }
 
         List<Movies> homeItemList1 = new ArrayList<>();
         homeItemList1.add(new Movies(1, "DHAMAL", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGE7Ru849-CouHPXcvEugD5LyVVxgHXGpUMCf4B_Rmoc_3ybcPMf4rkK8ecC4lC6pX8eY&usqp=CAU", ""));
@@ -111,7 +129,51 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initTab() {
+    private void initBanners (JSONObject ob) {
+
+        try {
+            Movies movie = new Movies(
+                    ob.getInt("id"),
+                    ob.getString("movieName"),
+                    ob.getString("imageUrl"),
+                    ob.getString("fileUrl")
+            );
+            movie.setCategoryId(ob.getInt("categoryId"));
+            banners.add(movie);
+        } catch (JSONException ignore) {}
+
+    }
+
+    private void loadBanner () {
+
+        banners = new ArrayList<>();
+
+        volley.makeRequest(
+                Request.Method.GET,
+                this.getResources().getString(R.string.banner_url),
+                response -> {
+
+                    try {
+
+                        JSONObject json = new JSONObject(response);
+                        JSONArray banners = json.getJSONArray("get_banners");
+                        int size = banners.length();
+
+                        for (int i=0; i<size; i++) {
+                            initBanners(banners.getJSONObject(i));
+                        }
+
+                    } catch (Exception ignore) {}
+
+                    setupLists();
+                    initTab();
+
+                }
+        );
+
+    }
+
+    private void initTab () {
 
         // default selected tab.
         setBannerMoviesPagerAdapter(homeBannerList);

@@ -30,7 +30,9 @@ public class MovieDetails extends AppCompatActivity {
             movieTitle.setText(intent.getStringExtra("name"));
             Glide.with(this).load(intent.getStringExtra("imageUrl")).into(moviePoster);
 
-            playButton.setOnClickListener( v -> startActivity(new Intent(MovieDetails.this, PlayerViewActivity.class)));
+            playButton.setOnClickListener( v -> startActivity(
+                    new Intent(MovieDetails.this, PlayerViewActivity.class)
+                            .putExtra("fileUrl", intent.getStringExtra("fileUrl"))));
 
         } else finish();
 

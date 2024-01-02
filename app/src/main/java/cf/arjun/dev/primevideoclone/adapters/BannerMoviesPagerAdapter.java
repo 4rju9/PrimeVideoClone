@@ -63,6 +63,7 @@ public class BannerMoviesPagerAdapter extends PagerAdapter {
             intent.putExtra("id", current.getId());
             intent.putExtra("name", current.getMovieName());
             intent.putExtra("imageUrl", current.getImageUrl());
+            intent.putExtra("fileUrl", current.getFileUrl());
             context.startActivity(intent);
 
         });

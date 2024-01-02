@@ -20,7 +20,6 @@ import com.google.android.exoplayer2.ui.PlayerView;
 
 public class PlayerViewActivity extends AppCompatActivity {
 
-    String MEDIA_URL = "https://eno.tendoloads.com/_v6/71f87b4028d27b3ba749bd2029f3248245618a740ca81a9a9863f257784436f85c939482f4d306945639b935dc612f232173cae4f207297dea8798f69741cdadcf03986938ae645355b02ac49101bd99d26dbcacac3e6ab00b678324a21474728d09a70cb4b5086fbc36943efb9f1695c522b23382b639d8f473c8ce9a528151/master.m3u8";
     PlayerView player;
     ExoPlayer exoPlayer;
     TrackSelectionParameters trackSelectionParameters;
@@ -48,7 +47,7 @@ public class PlayerViewActivity extends AppCompatActivity {
         exoPlayer = new ExoPlayer.Builder(this).build();
         player.setPlayer(exoPlayer);
 
-        MediaItem mediaItem = MediaItem.fromUri(MEDIA_URL);
+        MediaItem mediaItem = MediaItem.fromUri(getIntent().getStringExtra("fileUrl"));
         exoPlayer.setMediaItem(mediaItem);
 
         setTrackSelectionParameters();

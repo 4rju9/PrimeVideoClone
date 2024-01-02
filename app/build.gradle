@@ -43,4 +43,7 @@ dependencies {
     // ExoPlayer Library.
     implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
 
+    // Volley Library.
+    implementation 'com.android.volley:volley:1.2.1'
+
 }
