@@ -8,7 +8,11 @@
 
 ## BASED ON
    * Exo Player
+   * View Pager
    * Volley Library
+   * Recycler View
+   * Tab Layout
+   * Glide Library
 
 ## How To Install
 <b>Disclaimer :</b>
