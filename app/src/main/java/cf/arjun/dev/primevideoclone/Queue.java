@@ -39,7 +39,7 @@ public class Queue {
         return requestQueue;
     }
 
-    public void makeRequest (int method, String url, Response.Listener<String> response) {
+    public void makeRequest (int method, String url, Response.Listener<String> response, boolean shouldCache) {
 
         StringRequest request = new StringRequest(
                 method,
@@ -47,7 +47,7 @@ public class Queue {
                 response,
                 error -> Toast.makeText(ctx, "Something went wrong, Come back later!", Toast.LENGTH_LONG).show()
         );
-        request.setShouldCache(false);
+        request.setShouldCache(shouldCache);
         request.setTag(TAG);
         getRequestQueue().add(request);
 
