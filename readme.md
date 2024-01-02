@@ -1,5 +1,5 @@
 <p align="center">
-   <a href="https://github.com/4rju9/PrimeVideoClone"><img src="https://github.com/4rju9/live/assets/63835760/a5b29dde-4a43-4939-a51d-462f6e6a360f" alt="PRIMEVIDEOCLONE"</a>
+   <a href="https://github.com/4rju9/PrimeVideoClone"><img src="https://github.com/4rju9/live/assets/63835760/061e6c6a-0665-43d6-823b-ed16a391dd82" alt="PRIMEVIDEOCLONE"</a>
    <br>
    <br>
 </p>
