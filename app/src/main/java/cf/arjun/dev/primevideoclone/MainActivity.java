@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     List<Movies> homeBannerList, tvBannerList, moviesBannerList, kidsBannerList, banners;
     MainRecyclerAdapter mainAdapter;
     RecyclerView mainRecycler;
-    List<AllCategory> allCategoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupUIViews();
         loadBanner();
+        initTab();
 
     }
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setupLists () {
+    private void setupBannerLists () {
 
         homeBannerList = new ArrayList<>();
         tvBannerList = new ArrayList<>();
@@ -104,32 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        List<Movies> homeItemList1 = new ArrayList<>();
-        homeItemList1.add(new Movies(1, "DHAMAL", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGE7Ru849-CouHPXcvEugD5LyVVxgHXGpUMCf4B_Rmoc_3ybcPMf4rkK8ecC4lC6pX8eY&usqp=CAU", ""));
-        homeItemList1.add(new Movies(2, "DHOL", "https://img1.hotstarext.com/image/upload/f_auto,t_hcdl/sources/r1/cms/prod/old_images/MOVIE/2067/1000102067/1000102067-h", ""));
-        homeItemList1.add(new Movies(3, "JHOOTHA KAHIN KA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk0Wj8yhOhvd1SlaMM1Rr3RlMNNaJFzGkZv8x8-GkTC3BvnSyDnQb1PtcTyf5ATOsTns4&usqp=CAU", ""));
-
-        List<Movies> homeItemList2 = new ArrayList<>();
-        homeItemList2.add(new Movies(1, "PATHAAN", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZtSzm23_itlm8fPlTs-6mlZKnBqeLoF7YsERQhSkE63KtxyMY_K5xpT0_EqJWgLvUcFY&usqp=CAU", ""));
-        homeItemList2.add(new Movies(2, "ACTION JACKSON", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkyxIFV22C72ahiA27hVFRV53uJvEH7EhNKoQ8DPtM_ncQda7V7Eh4Td5U7WXfXt6wMAA&usqp=CAU", ""));
-        homeItemList2.add(new Movies(3, "BHOOT POLICE", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtUmF51J7aWS4HnH6RKecZpDSilblzIXDcO_9pMdgpJWqXimmCQlc4q_YT4r5nqBNudr8&usqp=CAU", ""));
-        homeItemList2.add(new Movies(4, "SHAMSHERA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTFa7Dfu0dmwVW74DR_uf0Fs6oGYMlOGyg528GVzuF7x_ii5ocvuV10U3FSDNIJbvJSqU&usqp=CAU", ""));
-        homeItemList2.add(new Movies(5, "D-DAY", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmJvLKnNQlhaBN0egVr9by8230UCvkas3QEbxPgQz6LYQiem8FG-AGQ0tAG4TtAymTPWo&usqp=CAU", ""));
-
-        List<Movies> homeItemList3 = new ArrayList<>();
-        homeItemList3.add(new Movies(1, "MAHABHARAT", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7MR1TO6ubpFF0wBxItBZVmXL6gexBCPM9CgFzRdFewR8je1DHULC6heL0dTaHNfekNxI&usqp=CAU", ""));
-        homeItemList3.add(new Movies(2, "RAMAYANA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXSwQYzmlgj7Mn1jSQXomKGh_xmgZNYv9sa2g2fYKw9t9YnAmhL4EOWIB1ak-u95wWFcs&usqp=CAU", ""));
-        homeItemList3.add(new Movies(3, "TAARAK MEHTA KA OOLTAH CHASHMAH", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7MR1TO6ubpFF0wBxItBZVmXL6gexBCPM9CgFzRdFewR8je1DHULC6heL0dTaHNfekNxI&usqp=CAU", ""));
-        homeItemList3.add(new Movies(5, "NAAGIN SEASON 5", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS29R3nU5yArItqGtGvYAQQCEzadIUEe6GYXNomwo_rnO_q_zXTaEv88t9VclYCpqfzNvI&usqp=CAU", ""));
-
-        allCategoryList = new ArrayList<>();
-        allCategoryList.add(new AllCategory(1, "Comedy movies", homeItemList1));
-        allCategoryList.add(new AllCategory(2, "Action and adventure movies", homeItemList2));
-        allCategoryList.add(new AllCategory(3, "Hindi TV Shows", homeItemList3));
-
     }
 
-    private void initBanners (JSONObject ob) {
+    private Movies initMoviesData(JSONObject ob) {
 
         try {
             Movies movie = new Movies(
@@ -138,10 +115,12 @@ public class MainActivity extends AppCompatActivity {
                     ob.getString("imageUrl"),
                     ob.getString("fileUrl")
             );
-            movie.setCategoryId(ob.getInt("categoryId"));
-            banners.add(movie);
+            if (ob.has("categoryId")) {
+                movie.setCategoryId(ob.getInt("categoryId"));
+            }
+            return movie;
         } catch (JSONException ignore) {}
-
+        return null;
     }
 
     private void loadBanner () {
@@ -156,29 +135,80 @@ public class MainActivity extends AppCompatActivity {
                     try {
 
                         JSONObject json = new JSONObject(response);
-                        JSONArray banners = json.getJSONArray("get_banners");
-                        int size = banners.length();
+                        JSONArray bannersJson = json.getJSONArray("get_banners");
+                        int size = bannersJson.length();
 
                         for (int i=0; i<size; i++) {
-                            initBanners(banners.getJSONObject(i));
+                            banners.add(initMoviesData(bannersJson.getJSONObject(i)));
                         }
 
                     } catch (Exception ignore) {}
 
-                    setupLists();
-                    initTab();
+                    setupBannerLists();
+                    setBannerMoviesPagerAdapter(homeBannerList);
 
-                }
+                },
+                false
+        );
+
+    }
+
+    private void loadRecycler (String url) {
+
+        List<AllCategory> allCategories = new ArrayList<>();
+
+        volley.makeRequest(
+                Request.Method.GET,
+                url,
+                response -> {
+
+                    try {
+
+                        JSONObject json = new JSONObject(response);
+                        JSONArray allCategoriesJson = json.getJSONArray("get_categories");
+
+                        int size = allCategoriesJson.length();
+                        for (int i=0; i<size; i++) {
+
+                            try {
+
+                                JSONObject ob = allCategoriesJson.getJSONObject(i);
+                                JSONArray moviesJson = ob.getJSONArray("get_movies");
+
+                                int s = moviesJson.length();
+                                List<Movies> mList = new ArrayList<>();
+
+                                for (int j=0; j<s; j++) {
+                                    mList.add(initMoviesData(moviesJson.getJSONObject(j)));
+                                }
+
+                                AllCategory category = new AllCategory(
+                                        ob.getInt("categoryId"),
+                                        ob.getString("categoryTitle"),
+                                        mList
+                                );
+
+                                allCategories.add(category);
+
+                            } catch (JSONException ignore) {}
+
+                        }
+
+                    } catch (Exception ignore) {}
+
+                    setMainRecyclerAdapter(allCategories);
+
+                },
+                false
         );
 
     }
 
     private void initTab () {
 
-        // default selected tab.
-        setBannerMoviesPagerAdapter(homeBannerList);
-        setMainRecyclerAdapter(allCategoryList);
-        // on tab data changed.
+        // default selected tab is home tab.
+        loadRecycler(this.getResources().getString(R.string.url_one));
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -187,18 +217,22 @@ public class MainActivity extends AppCompatActivity {
                     case 1: {
                         resetScrollView();
                         setBannerMoviesPagerAdapter(tvBannerList);
+                        loadRecycler(MainActivity.this.getResources().getString(R.string.url_two));
                         break;
                     } case 2: {
                         resetScrollView();
                         setBannerMoviesPagerAdapter(moviesBannerList);
+                        loadRecycler(MainActivity.this.getResources().getString(R.string.url_three));
                         break;
                     } case 3: {
                         resetScrollView();
                         setBannerMoviesPagerAdapter(kidsBannerList);
+                        loadRecycler(MainActivity.this.getResources().getString(R.string.url_four));
                         break;
                     } default: {
                         resetScrollView();
                         setBannerMoviesPagerAdapter(homeBannerList);
+                        loadRecycler(MainActivity.this.getResources().getString(R.string.url_one));
                     }
                 }
             }

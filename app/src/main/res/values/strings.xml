@@ -8,4 +8,8 @@
     <string name="tvStartOver">Start Over</string>
     <string name="track_selection_title">Video Quality</string>
     <string name="banner_url"><![CDATA[https://raw.githubusercontent.com/4rju9/live/main/PrimeVideoClone/banners.json]]></string>
+    <string name="url_one"><![CDATA[https://raw.githubusercontent.com/4rju9/live/main/PrimeVideoClone/1/get.json]]></string>
+    <string name="url_two"><![CDATA[https://raw.githubusercontent.com/4rju9/live/main/PrimeVideoClone/2/get.json]]></string>
+    <string name="url_three"><![CDATA[https://raw.githubusercontent.com/4rju9/live/main/PrimeVideoClone/3/get.json]]></string>
+    <string name="url_four"><![CDATA[https://raw.githubusercontent.com/4rju9/live/main/PrimeVideoClone/4/get.json]]></string>
 </resources>
