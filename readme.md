@@ -9,7 +9,6 @@
 ## BASED ON
    * Exo Player
    * Volley Library
-   * Git
 
 ## How To Install
 <b>Disclaimer :</b>
